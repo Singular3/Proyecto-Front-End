@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "68ca",
+      "nombre": "jose",
+      "correo": "mendieta@gmail.com",
+      "contraseña": "123456"
+    },
+    {
+      "id": "b47a",
+      "nombre": "edson",
+      "correo": "edson",
+      "contraseña": "09809809"
+    }
+  ]
+}
