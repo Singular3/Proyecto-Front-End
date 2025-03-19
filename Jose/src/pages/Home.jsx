@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-import ToDolist from '../components/ToDolist'
+import ToDolist from '../components/Home'
 
 function Home() {
   return (

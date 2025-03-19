@@ -1,14 +1,14 @@
 import React from 'react';
 
 
-import Rounting from './Routes/Rounting';
+import Routing from './Routes/Routing';
 
 function App() {
   return (
 
     <div>
 
-      <Rounting />
+    <Routing />
       
     </div>
   )

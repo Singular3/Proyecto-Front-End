@@ -8,7 +8,8 @@ import Register from '../Pages/Register';
 
 import Home from '../pages/Home';
 
-function Rounting() {
+
+function Routing() {
   return (
     <div>
       <Router>
@@ -19,6 +20,7 @@ function Rounting() {
                             <Route path="/login" element={<Login/>}/>
                             <Route path="/register" element={<Register/>}/>
                             <Route path="/home" element={<Home/>}/>
+                            
 
                       
                             
@@ -28,4 +30,4 @@ function Rounting() {
   )
 }
 
-export default Rounting;
+export default Routing;

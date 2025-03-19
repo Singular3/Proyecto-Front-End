@@ -1,16 +1,22 @@
 {
   "users": [
     {
-      "id": "68ca",
-      "nombre": "jose",
-      "correo": "mendieta@gmail.com",
-      "contraseña": "123456"
+      "id": "a4d5",
+      "nombre": "hola",
+      "correo": "hola@gmail.com",
+      "contraseña": "1234"
     },
     {
-      "id": "b47a",
-      "nombre": "edson",
-      "correo": "edson",
-      "contraseña": "09809809"
+      "id": "1b39",
+      "nombre": "amd",
+      "correo": "amd",
+      "contraseña": "amd"
+    },
+    {
+      "id": "4212",
+      "nombre": "akñjdklaf",
+      "correo": "fakñldjkña",
+      "contraseña": "1234567"
     }
   ]
 }
