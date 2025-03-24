@@ -1,13 +1,23 @@
 import React from 'react'
 
 
-import ToDolist from '../components/Home'
+import PaginaPrincipal from '../components/LandingPage'
+
+import Header from '../components/Header'
+import NavComponent from '../components/NavComponent'
+
 
 function Home() {
   return (
     <div>
 
-      <ToDolist />
+      <NavComponent/>
+      
+      <PaginaPrincipal />
+      
+      <Header />
+
+     
       
     </div>
   )

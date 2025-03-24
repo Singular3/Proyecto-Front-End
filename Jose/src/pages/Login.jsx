@@ -1,13 +1,16 @@
 import React from 'react'
 
 import FormLongin from '../Components/FormLogin'
+import NavComponent from '../components/NavComponent'
 
 
 function Login() {
   return (
     <div>
         
-      <FormLongin />
+        <NavComponent />
+
+        <FormLongin />
       
     </div>
   )

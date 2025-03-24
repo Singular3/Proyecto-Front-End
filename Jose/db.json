@@ -1,22 +1,39 @@
 {
   "users": [
     {
-      "id": "a4d5",
-      "nombre": "hola",
-      "correo": "hola@gmail.com",
-      "contraseña": "1234"
+      "id": "dfb3",
+      "nombre": "jose",
+      "correo": "jose",
+      "contraseña": "1234",
+      "rol": "admin"
     },
     {
-      "id": "1b39",
-      "nombre": "amd",
-      "correo": "amd",
-      "contraseña": "amd"
+      "id": "7d0f",
+      "nombre": "steven",
+      "correo": "choco",
+      "contraseña": "12345",
+      "rol": "usuario"
     },
     {
-      "id": "4212",
-      "nombre": "akñjdklaf",
-      "correo": "fakñldjkña",
-      "contraseña": "1234567"
+      "id": "eade",
+      "nombre": "jose",
+      "correo": "jose@gmail.com",
+      "contraseña": "jose12",
+      "rol": "usuario"
+    },
+    {
+      "id": "51d2",
+      "nombre": "jose",
+      "correo": "jose@gmail.com",
+      "contraseña": "123456",
+      "rol": "usuario"
+    },
+    {
+      "id": "582e",
+      "nombre": "jose",
+      "correo": "jose123@gmail.com",
+      "contraseña": "098765",
+      "rol": "usuario"
     }
   ]
 }
