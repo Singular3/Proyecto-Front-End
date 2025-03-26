@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import llamados from '../services/llamados';
+import llamados from '../services/llamados'
 
 function FormLogin() {
     const [nombreUsuario, SetNombreUsuario] = useState('');
@@ -44,12 +44,13 @@ function FormLogin() {
 
     return (
         <div>
+            <h1>Login</h1>
             <label htmlFor="">Nombre</label>
             <input value={nombreUsuario} onChange={nombre} type="text" />
             <label htmlFor="">Contraseña</label>
             <input value={passwordUsuario} onChange={password} type="password" />
             <button onClick={validar}>Iniciar</button>
-            <p>¿ya tienes una cuenta? <Link to={"/register"}> Inicia aquí</Link></p>
+            <p>¿ya tienes una cuenta? <Link to={"/register"}> Registrate aquí</Link></p>
         </div>
     );
 }

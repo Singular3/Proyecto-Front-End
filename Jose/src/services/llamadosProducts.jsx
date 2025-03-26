@@ -1,6 +1,6 @@
 async function getProducts() {
     try {
-        const response = await fetch("http://localhost:3000/products", {
+        const response = await fetch("http://localhost:3001/products", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,19 +23,21 @@ async function getProducts() {
 
 //////////LLAMADO POST//////////
 
-async function postUsers(nombre,correo,contraseña) {
+async function postProducts(nombreCentro,direccionCentro,horaApertura,horaCierre,fechaInicio,fechaFin) {
     try {
      
         const userData = { 
-            nombre,
-            correo,
-            contraseña
-        
+            nombreCentro,
+            direccionCentro,
+            horaApertura,
+            horaCierre,
+            fechaInicio,
+            fechaFin
         };
 
 
 
-        const response = await fetch("http://localhost:3000/products", {
+        const response = await fetch("http://localhost:3001/products", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -58,7 +60,7 @@ async function postUsers(nombre,correo,contraseña) {
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateUsers(nombre,correo,contraseña,id) 
+async function updateProducts(nombre,correo,contraseña,id) 
 {
     try {
      
@@ -73,7 +75,7 @@ async function updateUsers(nombre,correo,contraseña,id)
         
 
 
-        const response = await fetch("http://localhost:3000/products/"+id, {
+        const response = await fetch("http://localhost:3001/products/"+id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -96,9 +98,9 @@ async function updateUsers(nombre,correo,contraseña,id)
 //////////////LLAMADO DELETE/////////////
 
 
-async function deleteUser(id) {
+async function deleteProducts(id) {
     try {
-        const response = await fetch(`http://localhost:3000/products/${id}`, {
+        const response = await fetch(`http://localhost:3001/products/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -116,4 +118,4 @@ async function deleteUser(id) {
     }
 }
 
-export { getProducts, postUsers, updateUsers, deleteUser };
+export { getProducts, postProducts, updateProducts, deleteProducts };

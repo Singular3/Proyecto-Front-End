@@ -8,32 +8,26 @@
       "rol": "admin"
     },
     {
-      "id": "7d0f",
-      "nombre": "steven",
-      "correo": "choco",
-      "contraseña": "12345",
-      "rol": "usuario"
-    },
-    {
-      "id": "eade",
+      "id": "ba6a",
       "nombre": "jose",
-      "correo": "jose@gmail.com",
-      "contraseña": "jose12",
-      "rol": "usuario"
-    },
-    {
-      "id": "51d2",
-      "nombre": "jose",
-      "correo": "jose@gmail.com",
+      "correo": "jmendieta@gmail.com",
       "contraseña": "123456",
       "rol": "usuario"
     },
     {
-      "id": "582e",
+      "id": "fa2b",
       "nombre": "jose",
-      "correo": "jose123@gmail.com",
-      "contraseña": "098765",
+      "correo": "jmendieta123@gmail.com",
+      "contraseña": "123456",
+      "rol": "usuario"
+    },
+    {
+      "id": "ca7a",
+      "nombre": "jose",
+      "correo": "jm@gmail.com",
+      "contraseña": "12345678",
       "rol": "usuario"
     }
-  ]
+  ],
+  "products": []
 }

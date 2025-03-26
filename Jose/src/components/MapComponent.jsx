@@ -37,11 +37,10 @@ function Mapa() {
       <h3>Mapa de Puntos de Entrega</h3>
       <div className="mapa-container">
         <p>Mapa interactivo con los puntos de entrega cercanos.</p>
-        <div id="map" style={{ height: '400px' }}></div> {/* Contenedor del mapa */}
+        <div id="map" style={{ height: '400px', width: '100%' }}></div> {/* Contenedor del mapa con anchura */}
       </div>
     </div>
   );
 }
 
 export default Mapa;
-

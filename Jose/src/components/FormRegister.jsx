@@ -96,14 +96,7 @@ function FormRegister() {
 
       <p>¿Ya tienes una cuenta? <Link to={"/login"}>Inicia aquí</Link></p>
 
-      <h1>Usuarios registrados</h1>
-      <ul>
-        {usuario.map((user) => (
-          <li key={user.id}>
-            {user.nombre} - {user.correo}
-          </li>
-        ))}
-      </ul>
+      
     </div>
   );
 }
