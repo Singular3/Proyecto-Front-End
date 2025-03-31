@@ -1,38 +1,25 @@
 import React from 'react'
 
-
+import NavComponent from '../components/NavComponent'
 
 import MapComponent from '../components/MapComponent'
 
+import Foro from '../components/Foro'
+
 import Notificaciones from '../components/Notificaciones'
 
-import Header from '../components/Header'
-
-
-
-
-
-
-
-
-
 function LandingPage() {
-
-
-
 
   return (
     <div>
 
+      <NavComponent />
 
-      <Header/>
+      <MapComponent />
 
+      <Foro />
 
-      <MapComponent/>
-
-      <Notificaciones/>
-
-
+      <Notificaciones />
 
     </div>
   )

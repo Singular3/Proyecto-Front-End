@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import llamados from '../services/llamados';
-import '../styles/Register.css';
 
 function FormRegister() {
   const [nombreUsuario, SetNombreUsuario] = useState();
@@ -96,7 +95,6 @@ function FormRegister() {
 
       <p>¿Ya tienes una cuenta? <Link to={"/login"}>Inicia aquí</Link></p>
 
-      
     </div>
   );
 }

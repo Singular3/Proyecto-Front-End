@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';  // Importa el estilo de Leaflet
 
 function Mapa() {
+  const [userPosition, setUserPosition] = useState(null);  // Estado para guardar la ubicación del usuario
+
   useEffect(() => {
     // Crear el mapa y establecer la vista inicial
     const map = L.map('map').setView([9.981397949778884, -84.75705174167729], 13);
@@ -26,11 +28,34 @@ function Mapa() {
         .openPopup();
     });
 
+    // Obtener la ubicación en tiempo real del usuario
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        setUserPosition({ lat: latitude, lng: longitude });
+
+        // Mover el mapa y agregar un marcador para la ubicación actual del usuario
+        map.setView([latitude, longitude], 13);  // Actualiza la vista del mapa
+        L.marker([latitude, longitude])
+          .addTo(map)
+          .bindPopup('Ubicación Actual del Usuario')
+          .openPopup();
+      }, (error) => {
+        console.error("Error al obtener la ubicación", error);
+      }, {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+      });
+    } else {
+      alert("Geolocalización no es soportada en tu navegador.");
+    }
+
     // Limpiar cuando el componente se desmonte
     return () => {
       map.remove();
     };
-  }, []);
+  }, []);  // El efecto solo se ejecuta una vez al montar el componente
 
   return (
     <div>

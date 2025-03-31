@@ -1,117 +1,106 @@
 import React, { useState, useEffect } from 'react';
-import llamados from '../services/llamados';
+import llamadosProducts from '../services/llamadosProducts';
 
 function AdminComponent() {
-  const [centros, setCentros] = useState([]);
-  const [nombreCentro, setNombreCentro] = useState('');
-  const [direccionCentro, setDireccionCentro] = useState('');
-  const [horaApertura, setHoraApertura] = useState('');
-  const [horaCierre, setHoraCierre] = useState('');
-  const [fechaInicio, setFechaInicio] = useState('');
-  const [fechaFin, setFechaFin] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [direccion, setDireccion] = useState('');
+  const [horarios, setHorarios] = useState('');
+  const [productos, setProductos] = useState([]); // Estado para manejar los productos
+  const [editando, setEditando] = useState(null); // Para saber si estamos editando un producto
 
-  // Cargar centros al iniciar el componente
+  // Cargar productos (cuando el componente se monta)
   useEffect(() => {
-    async function fetchCentros() {
-      const centrosData = await llamados.getUsers(); // Usando getUsers para obtener todos los centros
-      setCentros(centrosData); // Suponiendo que 'centros' está en la respuesta
-    }
-
-    fetchCentros();
+    const cargarProductos = async () => {
+      const productosCargados = await llamadosProducts.getProducts(); // Suponiendo que tienes un método para obtener los productos
+      setProductos(productosCargados);
+    };
+    cargarProductos();
   }, []);
 
-  const handleNombreCentro = (e) => setNombreCentro(e.target.value);
-  const handleDireccionCentro = (e) => setDireccionCentro(e.target.value);
-  const handleHoraApertura = (e) => setHoraApertura(e.target.value);
-  const handleHoraCierre = (e) => setHoraCierre(e.target.value);
-  const handleFechaInicio = (e) => setFechaInicio(e.target.value);
-  const handleFechaFin = (e) => setFechaFin(e.target.value);
+  // Manejo de cambios en los campos de formulario
+  function cargarnombre(evento) {
+    setNombre(evento.target.value);
+  }
 
-  const handleRegistrarCentro = async () => {
-    const nuevoCentro = {
-      nombreCentro,
-      direccionCentro,
-      horaApertura,
-      horaCierre,
-      fechaInicio,
-      fechaFin,
-    };
+  function cargardireccion(evento) {
+    setDireccion(evento.target.value);
+  }
 
-    try {
-      // Usando un servicio POST (suponiendo que centros se manejen con postUsers por ahora)
-      await llamados.postUsers(nuevoCentro.nombreCentro, nuevoCentro.direccionCentro, nuevoCentro.horaApertura, nuevoCentro.horaCierre);
-      alert('Centro registrado correctamente');
-    } catch (error) {
-      console.error('Error registrando centro:', error);
-      alert('Hubo un error al registrar el centro');
+  function cargarhorarios(evento) {
+    setHorarios(evento.target.value);
+  }
+
+  // Registrar o editar producto
+  const registrar = async () => {
+    if (editando) {
+      // Si estamos editando, actualizar producto
+      await llamadosProducts.updateProduct(editando.id, nombre, direccion, horarios); // Suponiendo que la función updateProduct exista
+      setEditando(null); // Limpiar el estado de edición
+    } else {
+      // Si no estamos editando, agregar un nuevo producto
+      await llamadosProducts.postProducts(nombre, direccion, horarios);
     }
+
+    // Limpiar campos y actualizar lista
+    setNombre('');
+    setDireccion('');
+    setHorarios('');
+    const productosCargados = await llamadosProducts.getProducts();
+    setProductos(productosCargados);
   };
 
-  // Editar centro
-  const handleEditarCentro = async (id) => {
-    const centroActualizado = {
-      nombreCentro,
-      direccionCentro,
-      horaApertura,
-      horaCierre,
-      fechaInicio,
-      fechaFin,
-    };
-
-    try {
-      // Usamos el servicio PUT para actualizar
-      await llamados.updateUsers(id, centroActualizado.nombreCentro, centroActualizado.direccionCentro, centroActualizado.horaApertura, centroActualizado.horaCierre);
-      alert('Centro actualizado correctamente');
-    } catch (error) {
-      console.error('Error actualizando centro:', error);
-      alert('Hubo un error al actualizar el centro');
-    }
+  // Eliminar producto
+  const eliminarProducto = async (id) => {
+    await llamadosProducts.deleteProducts(id); // Suponiendo que tienes un método para eliminar un producto
+    const productosCargados = await llamadosProducts.getProducts();
+    setProductos(productosCargados);
   };
 
-  // Eliminar centro
-  const handleEliminarCentro = async (id) => {
-    try {
-      await llamados.deleteUser(id); // Llamamos el servicio DELETE
-      alert('Centro eliminado correctamente');
-    } catch (error) {
-      console.error('Error eliminando centro:', error);
-      alert('Hubo un error al eliminar el centro');
-    }
+  // Editar producto
+  const editarProducto = (producto) => {
+    setNombre(producto.nombre);
+    setDireccion(producto.direccion);
+    setHorarios(producto.horarios);
+    setEditando(producto); // Establecemos el producto a editar
   };
 
   return (
     <div>
-      <h1>Registro de centros de compostaje</h1>
+      <h1>Registro de Centros de Compostaje</h1>
 
-      <label htmlFor="nombreCentro">Nombre del centro</label><br />
-      <input id="nombreCentro" value={nombreCentro} onChange={handleNombreCentro} type="text" /><br />
+      <label htmlFor="nombre">Nombre del Centro:</label>
+      <input
+        type="text"
+        name="nombre"
+        value={nombre}
+        onChange={cargarnombre}
+      /><br />
 
-      <label htmlFor="direccionCentro">Dirección</label><br />
-      <input id="direccionCentro" value={direccionCentro} onChange={handleDireccionCentro} type="text" /><br />
+      <label htmlFor="direccion">Dirección del Centro:</label>
+      <input
+        type="text"
+        name="direccion"
+        value={direccion}
+        onChange={cargardireccion}
+      /><br />
 
-      <label htmlFor="horaApertura">Horario de atención</label><br />
-      <label htmlFor="horaApertura">Apertura</label><br />
-      <input id="horaApertura" value={horaApertura} onChange={handleHoraApertura} type="time" /><br />
+      <label htmlFor="horarios">Horarios de Funcionamiento:</label>
+      <input
+        type="time"
+        name="horarios"
+        value={horarios}
+        onChange={cargarhorarios}
+      /><br />
 
-      <label htmlFor="horaCierre">Cierre</label><br />
-      <input id="horaCierre" value={horaCierre} onChange={handleHoraCierre} type="time" /><br />
+      <button onClick={registrar}>{editando ? 'Actualizar Centro' : 'Registrar Centro'}</button>
 
-      <label htmlFor="fechaInicio">Fechas disponibles para el compostaje</label><br />
-      <label htmlFor="fechaInicio">Fecha de inicio</label><br />
-      <input id="fechaInicio" value={fechaInicio} onChange={handleFechaInicio} type="date" /><br />
-      <label htmlFor="fechaFin">Fecha de fin</label><br />
-      <input id="fechaFin" value={fechaFin} onChange={handleFechaFin} type="date" /><br />
-
-      <button onClick={handleRegistrarCentro}>Registrar centro</button>
-
-      {/* Renderizar centros */}
-      <h2>Centros de Compostaje</h2>
+      <h2>Centros Registrados</h2>
       <ul>
-        {centros.map(centro => (
-          <li key={centro.id}>
-            {centro.nombreCentro} - {centro.direccionCentro}
-            <button onClick={() => handleEditarCentro(centro.id)}>Editar</button>
-            <button onClick={() => handleEliminarCentro(centro.id)}>Eliminar</button>
+        {productos.map(producto => (
+          <li key={producto.id}>
+            <p>{producto.nombre} - {producto.direccion} - {producto.horarios}</p>
+            <button onClick={() => editarProducto(producto)}>Editar</button>
+            <button onClick={() => eliminarProducto(producto.id)}>Eliminar</button>
           </li>
         ))}
       </ul>
@@ -120,5 +109,4 @@ function AdminComponent() {
 }
 
 export default AdminComponent;
-
 

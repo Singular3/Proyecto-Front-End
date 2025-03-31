@@ -8,12 +8,7 @@ import Register from '../Pages/Register';
 
 import Home from '../pages/Home';
 
-import Mapa from '../pages/map';
-
 import Admin from '../pages/Admin';
-
-
-
 
 function Routing() {
   return (
@@ -26,14 +21,10 @@ function Routing() {
                             <Route path="/login" element={<Login/>}/>
                             <Route path="/register" element={<Register/>}/>
                             <Route path="/home" element={<Home/>}/>
-                            <Route path="/map" element={<Mapa/>}/>
                             <Route path="/admin" element={<Admin/>}/>
                            
                             
-                            
-
-                      
-                            
+                                                      
         </Routes>
       </Router>
     </div>

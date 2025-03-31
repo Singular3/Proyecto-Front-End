@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import llamados from '../services/llamados'
+import llamados from '../services/llamados';
+import Swal from 'sweetalert2';
 
 function FormLogin() {
     const [nombreUsuario, SetNombreUsuario] = useState('');
@@ -32,7 +33,12 @@ function FormLogin() {
         const encontrado = usuarios.filter(usuario => usuario.nombre === nombreUsuario && usuario.contraseña === passwordUsuario);
 
         if (encontrado.length === 0) {
-            console.log("Usuario o contrasena incorrectos");
+            // Mostrar alerta SweetAlert2 en caso de error
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Usuario o contraseña incorrectos!',
+            });
         } else {
             if (nombreUsuario === 'jose' && passwordUsuario === '1234') {
                 navigate('/admin');
@@ -50,7 +56,7 @@ function FormLogin() {
             <label htmlFor="">Contraseña</label>
             <input value={passwordUsuario} onChange={password} type="password" />
             <button onClick={validar}>Iniciar</button>
-            <p>¿ya tienes una cuenta? <Link to={"/register"}> Registrate aquí</Link></p>
+            <p>¿Ya tienes una cuenta? <Link to={"/register"}> Registrate aquí</Link></p>
         </div>
     );
 }

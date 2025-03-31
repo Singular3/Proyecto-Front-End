@@ -1,18 +1,11 @@
 {
   "users": [
     {
-      "id": "dfb3",
-      "nombre": "jose",
-      "correo": "jose",
-      "contraseña": "1234",
-      "rol": "admin"
-    },
-    {
       "id": "ba6a",
       "nombre": "jose",
       "correo": "jmendieta@gmail.com",
-      "contraseña": "123456",
-      "rol": "usuario"
+      "contraseña": "1234",
+      "rol": "admin"
     },
     {
       "id": "fa2b",
@@ -20,14 +13,14 @@
       "correo": "jmendieta123@gmail.com",
       "contraseña": "123456",
       "rol": "usuario"
-    },
-    {
-      "id": "ca7a",
-      "nombre": "jose",
-      "correo": "jm@gmail.com",
-      "contraseña": "12345678",
-      "rol": "usuario"
     }
   ],
-  "products": []
+  "products": [
+    {
+      "id": "2669",
+      "nombre": "barranca",
+      "direccion": "barranca",
+      "horarios": "06:05"
+    }
+  ]
 }

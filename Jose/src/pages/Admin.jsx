@@ -5,7 +5,9 @@ import AdminComponent from '../components/AdminComponent'
 function Admin() {
   return (
     <div>
-      <AdminComponent/>
+
+      <AdminComponent />
+
     </div>
   )
 }

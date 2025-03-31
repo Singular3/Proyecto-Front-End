@@ -1,6 +1,6 @@
 async function getProducts() {
     try {
-        const response = await fetch("http://localhost:3001/products", {
+        const response = await fetch('http://localhost:3001/products', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,16 +23,14 @@ async function getProducts() {
 
 //////////LLAMADO POST//////////
 
-async function postProducts(nombreCentro,direccionCentro,horaApertura,horaCierre,fechaInicio,fechaFin) {
+async function postProducts(nombre,direccion,horarios) {
     try {
      
-        const userData = { 
-            nombreCentro,
-            direccionCentro,
-            horaApertura,
-            horaCierre,
-            fechaInicio,
-            fechaFin
+        const productsData = { 
+            nombre,
+            direccion,
+            horarios
+        
         };
 
 
@@ -42,7 +40,7 @@ async function postProducts(nombreCentro,direccionCentro,horaApertura,horaCierre
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(productsData)
         });
 
      
@@ -56,18 +54,17 @@ async function postProducts(nombreCentro,direccionCentro,horaApertura,horaCierre
 }
 
 
-
 //////////////LLAMADO UPDATE/////////////
 
 
-async function updateProducts(nombre,correo,contraseña,id) 
+async function updateProducts(nombre,direccion,horarios,id) 
 {
     try {
      
-        const userData = { 
-            nombre,
-            correo,
-            contraseña
+        const productsData = { 
+            nombre, 
+            direccion,
+            horarios
         
         };
 
@@ -80,7 +77,7 @@ async function updateProducts(nombre,correo,contraseña,id)
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(productsData)
         });
 
      
@@ -118,4 +115,5 @@ async function deleteProducts(id) {
     }
 }
 
-export { getProducts, postProducts, updateProducts, deleteProducts };
+export default {getProducts,postProducts,updateProducts,deleteProducts}
+
